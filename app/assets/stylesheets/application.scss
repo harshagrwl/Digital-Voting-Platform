@@ -2,5 +2,7 @@
 @import "bootstrap";
 
 @import "base/variables";
-
+@import "base/default";
+@import "partials/*";
 @import "partials/layout/*";
+@import "responsive/*";
