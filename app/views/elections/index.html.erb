@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Elections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Deadline</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Session</th>
+      <th>Vote count</th>
+      <th>Candidate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @elections.each do |election| %>
+      <tr>
+        <td><%= election.position %></td>
+        <td><%= election.deadline %></td>
+        <td><%= election.start %></td>
+        <td><%= election.end %></td>
+        <td><%= election.session %></td>
+        <td><%= election.vote_count %></td>
+        <td><%= election.candidate %></td>
+        <td><%= link_to 'Show', election %></td>
+        <td><%= link_to 'Edit', edit_election_path(election) %></td>
+        <td><%= link_to 'Destroy', election, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Election', new_election_path %>
