@@ -31,6 +31,12 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'factory_bot'
+  gem 'rails-controller-testing'
+  gem 'headless'
+  gem 'poltergeist'
+  gem 'database_cleaner'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
