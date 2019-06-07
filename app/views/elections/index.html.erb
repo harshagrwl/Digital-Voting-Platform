@@ -2,38 +2,28 @@
 
 <h1>Elections</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Position</th>
-      <th>Deadline</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Session</th>
-      <th>Vote count</th>
-      <th>Candidate</th>
-      <th colspan="3"></th>
+      <th scope="col">Position</th>
+      <th scope="col">Session</th>
+      <th scope="col">Registration Deadline</th>
+      <th scope="col">Voting Start Time</th>
+      <th scope="col">Voting End Time</th>
     </tr>
   </thead>
 
   <tbody>
     <% @elections.each do |election| %>
       <tr>
-        <td><%= election.position %></td>
-        <td><%= election.deadline %></td>
-        <td><%= election.start %></td>
-        <td><%= election.end %></td>
+        <th scope="row">
+          <%= link_to election.position, election_path(election) %>
+        </th>
         <td><%= election.session %></td>
-        <td><%= election.vote_count %></td>
-        <td><%= election.candidate %></td>
-        <td><%= link_to 'Show', election %></td>
-        <td><%= link_to 'Edit', edit_election_path(election) %></td>
-        <td><%= link_to 'Destroy', election, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= date_format(election.deadline) %></td>
+        <td><%= date_format(election.start_time) %></td>
+        <td><%= date_format(election.end_time) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Election', new_election_path %>

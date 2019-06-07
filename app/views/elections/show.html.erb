@@ -7,17 +7,17 @@
 
 <p>
   <strong>Deadline:</strong>
-  <%= @election.deadline %>
+  <%= date_format(@election.deadline) %>
 </p>
 
 <p>
   <strong>Start:</strong>
-  <%= @election.start %>
+  <%= date_format(@election.start_time) %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @election.end %>
+  <%= date_format(@election.end_time) %>
 </p>
 
 <p>
@@ -25,15 +25,10 @@
   <%= @election.session %>
 </p>
 
-<p>
-  <strong>Vote count:</strong>
-  <%= @election.vote_count %>
-</p>
+<% if @election.voting_over? %>
+  <%= render partial: 'candidate_vote_count', locals: {candidates: @election.candidates, vote_count: @election.vote_count} %>
+<% else %>
+  <%= render partial: 'candidates', locals: {candidates: @election.candidates, in_progress: @election.in_progress?, election_id: @election.id} %>
+<% end %>
 
-<p>
-  <strong>Candidate:</strong>
-  <%= @election.candidate %>
-</p>
-
-<%= link_to 'Edit', edit_election_path(@election) %> |
 <%= link_to 'Back', elections_path %>

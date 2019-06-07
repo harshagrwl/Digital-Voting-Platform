@@ -8,12 +8,19 @@ class User < ApplicationRecord
   has_one :candidate, dependent: :destroy
   has_many :votes
 
+  ATTR_METHODS = Array.new
+  attribute_names.reject { |val| %w[id created_at updated_at].include?(val) }
+    .each do |val|
+    ATTR_METHODS << val.to_sym
+    ATTR_METHODS << "#{val}=".to_sym
+  end
+
   delegate *UserDetail::ATTR_METHODS, to: :user_detail
   delegate *Candidate::ATTR_METHODS, to: :candidate
 
   def is?(requested_role)
-    return candidate_details if requested_role == 'candidate'
-    return user_details if requested_role == 'user'
+    return candidate if requested_role == 'candidate'
+    return user_detail if requested_role == 'user'
     return admin
   end
 end

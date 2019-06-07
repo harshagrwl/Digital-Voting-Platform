@@ -1,5 +1,5 @@
 class ElectionsController < ApplicationController
-  before_action :set_election, only: [:show, :edit, :update, :destroy]
+  before_action :set_election, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /elections
   # GET /elections.json
@@ -59,6 +59,9 @@ class ElectionsController < ApplicationController
       format.html { redirect_to elections_url, notice: 'Election was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def vote
   end
 
   private

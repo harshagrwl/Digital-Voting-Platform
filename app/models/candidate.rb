@@ -8,6 +8,9 @@ class Candidate < ApplicationRecord
     ATTR_METHODS << "#{val}=".to_sym
   end
 
+  delegate *User::ATTR_METHODS, to: :user
+  delegate *UserDetail::ATTR_METHODS, to: :user
+
   PARTIES = [
     "Democratic Party",
     "Republican Party",
