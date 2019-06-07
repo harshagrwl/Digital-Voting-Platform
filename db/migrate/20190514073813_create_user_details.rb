@@ -1,7 +1,6 @@
 class CreateUserDetails < ActiveRecord::Migration[5.2]
   def change
     create_table :user_details do |t|
-      t.string :name
       t.string :gender
       t.string :branch
       t.integer :year
@@ -10,6 +9,7 @@ class CreateUserDetails < ActiveRecord::Migration[5.2]
       t.string :section
       t.boolean :opt_in
       t.string :residence
+      t.decimal :cpga
       t.references :user, foreign_key: true
 
       t.timestamps

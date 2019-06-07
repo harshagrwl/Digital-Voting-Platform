@@ -17,7 +17,7 @@ Models:
     - opt-in: bool
     - residence: string
     - belongs_to user
-  - CandidateDetail: # Model
+  - Candidate: # Model
     - affilation: string
     - cgpa: decimal
     - past_experience: text
