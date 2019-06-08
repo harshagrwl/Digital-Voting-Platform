@@ -10,6 +10,10 @@ class Election < ApplicationRecord
     save
   end
 
+  def self.finished
+    select { |election| election.voting_over? }
+  end
+
   def nominations_over?
     deadline < DateTime.now
   end
@@ -36,5 +40,22 @@ class Election < ApplicationRecord
 
   def winner
     Candidate.find(vote_count.max_by{ |k,v| v }[0])
+  end
+  
+  def to_csv
+    require 'csv'
+    attributes = %w[hash prev_hash candidate_id]
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      votes.each do |vote|
+        if vote.vote
+          csv << [vote.data, vote.vote.data, vote.candidate_id]
+        else
+          csv << [vote.data, nil, vote.candidate_id]
+        end
+      end
+    end
   end
 end
