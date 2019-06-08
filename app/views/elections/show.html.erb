@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @election.position %>
-</p>
+<%= content_for :title do %><%= @election.position %><% end %>
 
 <p>
   <strong>Deadline:</strong>
@@ -26,9 +23,14 @@
 </p>
 
 <% if @election.voting_over? %>
-  <%= render partial: 'candidate_vote_count', locals: {candidates: @election.candidates, vote_count: @election.vote_count} %>
-<% else %>
-  <%= render partial: 'candidates', locals: {candidates: @election.candidates, in_progress: @election.in_progress?, election_id: @election.id} %>
+  <p>
+    <strong>Winner:</strong>
+    <%= link_to @election.winner.name, candidate_path(@election.winner) %>
+  </p>
 <% end %>
+
+<div id="candidates-panel">
+  <%= render partial: candidates_panel_partial_path(@election), locals: {election: @election} %>
+</div>
 
 <%= link_to 'Back', elections_path %>

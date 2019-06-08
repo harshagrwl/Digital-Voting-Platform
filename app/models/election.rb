@@ -33,4 +33,8 @@ class Election < ApplicationRecord
     vote_count[candidate_id.to_s] += 1
     save
   end
+
+  def winner
+    Candidate.find(vote_count.max_by{ |k,v| v }[0])
+  end
 end

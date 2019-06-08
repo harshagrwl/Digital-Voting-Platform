@@ -1,9 +1,10 @@
 <h3 class="text-center">Nominated Candidates</h3>
 <br>
-<% vote = can? :vote, Election && in_progress && !voted(election_id) %>
+<% vote = can? :vote, Election && election.in_progress? && !voted(election.id) %>
+<% candidates = election.candidates %>
 
 <table class="table">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Candidate</th>
       <th scope="col">Affilation</th>
@@ -28,7 +29,7 @@
         <td><%= candidate.course %></td>
         <% if vote %>
           <td>
-            <%= link_to 'Vote', election_vote_path(election_id, candidate.id), remote: true %>
+            <%= link_to 'Vote', election_vote_path(election.id, candidate.id), remote: true %>
           </td>
         <% end %>
       </tr>
