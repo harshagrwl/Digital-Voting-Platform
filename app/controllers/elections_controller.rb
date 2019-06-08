@@ -1,6 +1,6 @@
 class ElectionsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_election, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_election, only: [:show, :edit, :update, :destroy]
 
   # GET /elections
   # GET /elections.json
@@ -11,6 +11,11 @@ class ElectionsController < ApplicationController
   # GET /elections/1
   # GET /elections/1.json
   def show
+    @can_vote = if helpers.voted(@election.id)
+                  false
+                else
+                  (can? :vote, Election) && @election.in_progress?
+                end
   end
 
   # GET /elections/new
@@ -63,6 +68,8 @@ class ElectionsController < ApplicationController
   end
 
   def vote
+    @election = Election.find(params[:election_id])
+    @election.vote(@current_user.id, params[:candidate_id])
   end
 
   private

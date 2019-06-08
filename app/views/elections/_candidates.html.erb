@@ -1,6 +1,10 @@
 <h3 class="text-center">Nominated Candidates</h3>
 <br>
-<% vote = can? :vote, Election && election.in_progress? && !voted(election.id) %>
+
+<% if voted(election.id) %>
+  <p><strong>You have already voted in this election</strong></p>
+<% end %>
+
 <% candidates = election.candidates %>
 
 <table class="table">
@@ -11,7 +15,7 @@
       <th scope="col">Branch</th>
       <th scope="col">Year</th>
       <th scope="col">Course</th>
-      <% if vote %>
+      <% if @vote %>
         <th scope="col">Vote</th>
       <% end %>
     </tr>
@@ -27,7 +31,7 @@
         <td><%= candidate.branch %></td>
         <td><%= candidate.year %></td>
         <td><%= candidate.course %></td>
-        <% if vote %>
+        <% if @can_vote %>
           <td>
             <%= link_to 'Vote', election_vote_path(election.id, candidate.id), remote: true %>
           </td>
