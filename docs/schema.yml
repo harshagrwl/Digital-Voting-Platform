@@ -30,10 +30,9 @@ Models:
     - start: datetime
     - end: datetime
     - session: string
-    - vote_count: text, serialized as hash (maybe JSON? since using postgres)
+    - vote_count: json
     - has_many nominations
     - has_many candidates, through nominations
-    - belongs_to candidate, as winner
     - has_many votes
   - Vote: # Model
     - data: int

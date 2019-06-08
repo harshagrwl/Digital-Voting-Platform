@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_075354) do
     t.string "section"
     t.boolean "opt_in"
     t.string "residence"
-    t.decimal "cpga"
+    t.decimal "cgpa"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

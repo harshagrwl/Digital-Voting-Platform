@@ -21,7 +21,7 @@ def create_user
     email: email,
     password: 'passwd',
     password_confirmation: 'passwd',
-    name: 'name'
+    name: name
   )
 
   roll_number = "18-#{user.id}"
@@ -34,7 +34,8 @@ def create_user
     course: course,
     section: section,
     opt_in: opt_in,
-    residence: residence
+    residence: residence,
+    cgpa: cgpa
   )
   user
 end
@@ -63,12 +64,13 @@ puts "User accounts created"
 # Create 15 candidates
 15.times do |id|
   user = create_user
-  user.create_candidate(
+  candidate = Candidate.new(
     affilation: Candidate::PARTIES.sample,
     past_experiences: '',
     about_me: "Hi! I am awesome candidate number #{id}",
     link: ''
   )
+  user.candidate = candidate
 end
 
 puts "Candidate accounts created"

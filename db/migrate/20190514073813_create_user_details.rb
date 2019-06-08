@@ -9,7 +9,7 @@ class CreateUserDetails < ActiveRecord::Migration[5.2]
       t.string :section
       t.boolean :opt_in
       t.string :residence
-      t.decimal :cpga
+      t.decimal :cgpa
       t.references :user, foreign_key: true
 
       t.timestamps
