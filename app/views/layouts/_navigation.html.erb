@@ -7,6 +7,17 @@
 
   <div class="collapse navbar-collapse" id="navbarContent">
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to 'Elections', elections_path, class: 'nav-link' %>
+      </li>
+      
+      <li class="nav-item">
+        <%= link_to 'Candidates', candidates_path, class: 'nav-link' %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Ledger', ledger_path, class: 'nav-link' %>
+      </li>
       <%= render navbar_links_partial %>
     </ul>
   </div>
