@@ -4,6 +4,6 @@ module ApplicationHelper
   include NavigationHelper
 
   def date_format(datetime)
-    datetime.strftime("%H:%M %F")
+    datetime.strftime("%H:%M, %d %B %y")
   end
 end
