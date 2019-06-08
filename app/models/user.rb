@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   def is?(requested_role)
     return candidate if requested_role == 'candidate'
-    return user_detail if requested_role == 'user'
-    return admin
+    return admin if requested_role == 'admin'
+    return id if requested_role == 'user'
   end
 end

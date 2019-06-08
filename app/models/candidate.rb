@@ -1,5 +1,7 @@
 class Candidate < ApplicationRecord
   belongs_to :user
+  has_many :nominations
+  has_many :elections, through: :nominations
 
   ATTR_METHODS = Array.new
   attribute_names.reject { |val| %w[id created_at updated_at].include?(val) }
