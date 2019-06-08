@@ -22,7 +22,7 @@ class Ability
     end
 
     if user.is? 'user'
-
+      can :vote, Election
     end
   end
 end
