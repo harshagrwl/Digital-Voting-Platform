@@ -105,7 +105,7 @@ elections << Election.create(
   position: "Present Election",
   deadline: DateTime.now - 1.week,
   start_time: DateTime.now - 2.day,
-  end_time: DateTime.now + 1.week,
+  end_time: DateTime.now + 99.year,
   session: session
 )
 
@@ -113,17 +113,17 @@ elections << Election.create(
 
 elections << Election.create(
   position: "Future Election 1",
-  deadline: DateTime.now + 1.month,
-  start_time: DateTime.now + 5.week,
-  end_time: DateTime.now + 6.week,
+  deadline: DateTime.now + 5.year,
+  start_time: DateTime.now + 6.week,
+  end_time: DateTime.now + 7.week,
   session: session
 )
 
 elections << Election.create(
   position: "Future Election 2",
-  deadline: DateTime.now + 1.week,
-  start_time: DateTime.now + 2.week,
-  end_time: DateTime.now + 15.day,
+  deadline: DateTime.now + 99.year,
+  start_time: DateTime.now + 100.year,
+  end_time: DateTime.now + 100.year,
   session: session
 )
 
