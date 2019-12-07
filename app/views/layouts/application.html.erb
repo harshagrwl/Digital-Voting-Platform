@@ -1,41 +1,78 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-      <%= yield :title %>
-    </title>
+    <title>Hackathon</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "style" %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
 
   <body>
-    <%= render 'layouts/navigation' %>
-    <div class="container">
-      <% if notice %>
-        <p class="alert alert-success">
-          <%= notice %>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-        </p>
-      <% end %>
+  <h1 align="center">NITK Online Voting Portal</h1>
 
-      <% if alert %>
-        <p class="alert alert-danger">
-          <%= alert %>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-        </p>
-      <% end %>
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="background-color: #FF4B2B">
+        <div class="container-fluid">
+            <a class = "navbar-brand" href="https://www.nitk.ac.in"> <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/NITK_Emblem.png" alt="logo" width="60" height="70"> </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarResponsive">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <div class = "row">
+                    <ul class="navbar-nav ml-auto">
+                      <div class = "col-sm-2">
+                        <li class="nav-item">
+                          <%= link_to "Home", root_path %>
+                        </li>
+                      </div>
 
-      <div class="card">
-        <div class="card-header">
-            <h1 class="text-primary text-center"><%= yield :title %></h1>
+                      <div class ="col-sm-2">
+                        <li class="nav-item">
+                          <%= link_to "Profile", user_profile_path %>
+                        </li>
+                      </div>
+
+                      <div class="col-sm-3">
+                        <li class="nav-item">
+                          <%= link_to "Elections", elections_path %>
+                        </li>
+                      </div>
+
+                      <div class = "col-sm-3">
+                        <li class="nav-item">
+                          <%= link_to "Candidates", candidates_path %>
+                        </li>
+                      </div>
+
+                      <div class="col-sm-3">
+                        <% if @current_user %>
+                          <li class="nav-item">
+                            <%= link_to "Log Out", logout_path  %>
+                          </li>
+                        <% else %>
+                          <li class="nav-item">
+                            <%= link_to "Log In", login_path  %>
+                          </li>
+                        <% end %>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
         </div>
-        <div class="card-body">
-          <%= yield %>
-        </div>
-      </div>
-    </div>
+    </nav>
+
+<%= yield %>
   </body>
 </html>
