@@ -1,7 +1,5 @@
 # Digital Voting Platform
 
-Rewrite of a project made during Digital Hackathon, organized by ACM-IE. Reasons behind rewriting this project is described in in [Issue #21](https://github.com/abhishekkumar2718/Digital-Hackathon/issues/21)
-
 Check out the project live [here](https://secret-basin-11954.herokuapp.com/)
 
 Abstract of the project -
@@ -26,8 +24,8 @@ Our solution is an web application, made with Ruby on Rails and Bootstrap. The w
 Setup the project using following steps:
 
 ```
-git clone https://github.com/abhishekkumar2718/Digital-Hackathon.git
-cd Digital-Hackathon
+git clone https://github.com/harshagrwl/Digital-Voting-Platform.git
+cd Digital-Voting-Platform
 bundle install
 rails db:create
 rails db:migrate
